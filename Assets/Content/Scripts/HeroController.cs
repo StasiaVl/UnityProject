@@ -22,7 +22,8 @@ public class HeroController : MonoBehaviour {
         myBody = this.GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        LevelController.current.setStartPosition(new Vector3());//transform.position);
+        Vector3 startPos = transform.position;
+        LevelController.current.setStartPosition(startPos);//transform.position);
     }
 
     void FixedUpdate()

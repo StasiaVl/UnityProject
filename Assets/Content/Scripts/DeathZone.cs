@@ -33,7 +33,10 @@ public class DeathZone : MonoBehaviour
         {
             Debug.Log("DEAD");
             //Повідомляємо рівень, про смерть кролика
-            LevelController.current.onRabbitDeath(rabbit);
+            if (LevelController.current != null)
+                LevelController.current.onRabbitDeath(rabbit);
+            else
+                Debug.LogError("Seems like something is wrong with the singleton.");
         }
     }
 }

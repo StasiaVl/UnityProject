@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour {
 
-    public static LevelController current;
+    public static LevelController current = null;
     private int lifes = 3;
     Vector3 startingPosition;
 
     void Awake()
     {
-        current = this;
+        if (LevelController.current == null)
+            LevelController.current = this;
+
+        if (LevelController.current != this)
+            Destroy(this.gameObject);
     }
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void setStartPosition(Vector3 pos)
     {
