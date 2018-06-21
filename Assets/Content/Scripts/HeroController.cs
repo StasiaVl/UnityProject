@@ -9,6 +9,7 @@ public class HeroController : MonoBehaviour {
     private Rigidbody2D myBody = null;
     private SpriteRenderer sr = null;
     Animator anim;
+    Transform heroParent = null;
     private bool isGrounded = false;
     bool JumpActive = false;
     float JumpTime = 0f;
@@ -22,16 +23,17 @@ public class HeroController : MonoBehaviour {
         myBody = this.GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        Vector3 startPos = transform.position;
-        LevelController.current.setStartPosition(startPos);//transform.position);
+        LevelController.current.setStartPosition(transform.position);
+        this.heroParent = this.transform.parent;
     }
 
     void FixedUpdate()
     {
         if (dead)
         {
-            this.transform.position = new Vector2(0.5f,0.5f);
             anim.Play("Rabbit_Die");
+            this.transform.position = LevelController.current.getStartPosition();
+            dead = false;
         }
         else
         {
@@ -41,6 +43,21 @@ public class HeroController : MonoBehaviour {
             //Перевіряємо чи проходить лінія через Collider з шаром Ground
             RaycastHit2D hit = Physics2D.Linecast(from, to, layer_id);
             isGrounded = hit;
+
+            if (hit)
+            {
+                //Перевіряємо чи ми опинились на платформі
+                if (hit.transform != null && hit.transform.GetComponent<MovingPlatform>() != null)
+                {
+                    //Приліпаємо до платформи
+                    SetNewParent(this.transform, hit.transform);
+                }
+            }
+            else
+            {
+                //Ми в повітрі відліпаємо під платформи
+                SetNewParent(this.transform, this.heroParent);
+            }
 
             if (Input.GetButtonDown("Jump") && isGrounded)
                 this.JumpActive = true;
@@ -97,5 +114,20 @@ public class HeroController : MonoBehaviour {
     public void Death()
     {
         dead = true;
+    }
+
+    static void SetNewParent(Transform obj, Transform new_parent)
+    {
+        if (obj.transform.parent != new_parent)
+        {
+            //Засікаємо позицію у Глобальних координатах
+            Vector3 pos = obj.transform.position;
+            //Встановлюємо нового батька
+            obj.transform.parent = new_parent;
+            //Після зміни батька координати кролика зміняться
+            //Оскільки вони тепер відносно іншого об’єкта
+            //повертаємо кролика в ті самі глобальні координати
+            obj.transform.position = pos;
+        }
     }
 }

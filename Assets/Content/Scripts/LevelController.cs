@@ -22,6 +22,11 @@ public class LevelController : MonoBehaviour {
         this.startingPosition = pos;
     }
 
+    public Vector3 getStartPosition()
+    {
+        return this.startingPosition;
+    }
+
     public void onRabbitDeath(HeroController hero)
     {
         hero.Death();
