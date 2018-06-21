@@ -17,8 +17,7 @@ public class DeathZone : MonoBehaviour
 
         //Рухаємо камеру тільки по X
         zone_position.x = rabit_position.x;
-
-        //Встановлюємо координати камери
+        
         this.transform.position = zone_position;
     }
 

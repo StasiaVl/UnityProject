@@ -11,11 +11,11 @@ public class HeroController : MonoBehaviour {
     Animator anim;
     Transform heroParent = null;
     private bool isGrounded = false;
+    private bool dead = false;
     bool JumpActive = false;
     float JumpTime = 0f;
     public float MaxJumpTime = 1f;
     public float JumpSpeed = 3f;
-    private bool dead = false;
 
     // Use this for initialization
     void Start()
@@ -31,9 +31,8 @@ public class HeroController : MonoBehaviour {
     {
         if (dead)
         {
-            anim.Play("Rabbit_Die");
-            this.transform.position = LevelController.current.getStartPosition();
-            dead = false;
+            //anim.Play("Rabbit_Die");
+            //StartCoroutine(OnDead());
         }
         else
         {
@@ -111,9 +110,18 @@ public class HeroController : MonoBehaviour {
         }
     }
 
-    public void Death()
+    public void DeathTrue()
     {
         dead = true;
+        StartCoroutine(OnDead());
+    }
+
+    IEnumerator OnDead()
+    {
+        anim.Play("Rabbit_Die");
+        yield return new WaitForSeconds(0.8f);
+        this.transform.position = LevelController.current.getStartPosition();
+        dead = false;
     }
 
     static void SetNewParent(Transform obj, Transform new_parent)

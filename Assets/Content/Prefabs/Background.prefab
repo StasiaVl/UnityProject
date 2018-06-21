@@ -502,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowdown: 0.8
+  rabit: {fileID: 0}
 --- !u!114 &114348513613292928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -514,6 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowdown: 0.9
+  rabit: {fileID: 0}
 --- !u!114 &114620541110601122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -526,6 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowdown: 0.7
+  rabit: {fileID: 0}
 --- !u!114 &114756859161735056
 MonoBehaviour:
   m_ObjectHideFlags: 1

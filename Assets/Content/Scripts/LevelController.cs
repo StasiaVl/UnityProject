@@ -29,8 +29,8 @@ public class LevelController : MonoBehaviour {
 
     public void onRabbitDeath(HeroController hero)
     {
-        hero.Death();
-        hero.transform.position = this.startingPosition;
+        hero.DeathTrue();
+        //hero.transform.position = this.startingPosition;
         //if (decrementLifes() > 0) ;
         //else
         //    //TODO restart lvl
