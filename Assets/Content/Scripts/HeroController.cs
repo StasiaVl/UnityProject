@@ -13,6 +13,7 @@ public class HeroController : MonoBehaviour {
     private bool isGrounded = false;
     private bool dead = false;
     bool JumpActive = false;
+    bool isBig = false;
     float JumpTime = 0f;
     public float MaxJumpTime = 1f;
     public float JumpSpeed = 3f;
@@ -110,7 +111,7 @@ public class HeroController : MonoBehaviour {
         }
     }
 
-    public void DeathTrue()
+    public void Die()
     {
         dead = true;
         StartCoroutine(OnDead());
@@ -122,6 +123,28 @@ public class HeroController : MonoBehaviour {
         yield return new WaitForSeconds(0.8f);
         this.transform.position = LevelController.current.getStartPosition();
         dead = false;
+    }
+
+    public void EatMushroom()
+    {
+        if (!isBig)
+        {
+            isBig = true;
+            transform.localScale = new Vector3(1.5f, 1.5f, 0);
+        }
+    }
+    
+    public void EatBomb()
+    {
+        if (isBig)
+        {
+            isBig = false;
+            transform.localScale = new Vector3(1, 1, 0);
+        }
+        else
+        {
+            Die();
+        }
     }
 
     static void SetNewParent(Transform obj, Transform new_parent)

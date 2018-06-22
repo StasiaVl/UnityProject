@@ -18,7 +18,8 @@ public class HeroFollow : MonoBehaviour
 
         //Рухаємо камеру тільки по X,Y
         camera_position.x = rabit_position.x;
-        camera_position.y = rabit_position.y;
+        if (rabit_position.y < 5 && rabit_position.y > -4.5)
+            camera_position.y = rabit_position.y;
 
         //Встановлюємо координати камери
         this.transform.position = camera_position;

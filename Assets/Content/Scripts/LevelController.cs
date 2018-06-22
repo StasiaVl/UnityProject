@@ -6,6 +6,7 @@ public class LevelController : MonoBehaviour {
 
     public static LevelController current = null;
     private int lifes = 3;
+    private int coins = 0;
     Vector3 startingPosition;
 
     void Awake()
@@ -27,9 +28,15 @@ public class LevelController : MonoBehaviour {
         return this.startingPosition;
     }
 
+    public void addCoins(int a)
+    {
+        coins += a;
+        //renew GUI
+    }
+
     public void onRabbitDeath(HeroController hero)
     {
-        hero.DeathTrue();
+        hero.Die();
         //hero.transform.position = this.startingPosition;
         //if (decrementLifes() > 0) ;
         //else
