@@ -114,19 +114,18 @@ public class OrcEnemy : MonoBehaviour
         HeroController rabbit = other.transform.GetComponent<HeroController>();
         if (rabbit != null)
         {
+            myBody.velocity = Vector2.zero;
             if (rabbit.transform.position.y > transform.position.y + 1)
             {
                 mode = Mode.Dead;
-                myBody.velocity = Vector2.zero;
                 animOrc.Play("GreenOrc_Die");
                 Destroy(gameObject, 1);
                 rabbit.OnKill();
             }
             else
             {
+                animOrc.Play("GreenOrc_Attack");
                 LevelController.current.onRabbitDeath(rabbit);
-                if (mode == Mode.Attack)
-                    animOrc.Play("GreenOrc_Attack");
             }
         }
     }
