@@ -30,7 +30,7 @@ public class DeathZone : MonoBehaviour
         //Впасти міг не тільки кролик
         if (rabbit != null)
         {
-            Debug.Log("DEAD");
+            //Debug.Log("DEAD");
             //Повідомляємо рівень, про смерть кролика
             if (LevelController.current != null)
                 LevelController.current.onRabbitDeath(rabbit);

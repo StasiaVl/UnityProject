@@ -30,12 +30,7 @@ public class HeroController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (dead)
-        {
-            //anim.Play("Rabbit_Die");
-            //StartCoroutine(OnDead());
-        }
-        else
+        if (!dead)
         {
             Vector3 from = transform.position + Vector3.up * 0.3f;
             Vector3 to = transform.position + Vector3.down * 0.1f;
@@ -117,12 +112,21 @@ public class HeroController : MonoBehaviour {
         StartCoroutine(OnDead());
     }
 
+    public void OnKill()
+    {
+        Vector2 vel = myBody.velocity;
+        vel.y = 6f;
+        myBody.velocity = vel;
+    }
+
     IEnumerator OnDead()
     {
         anim.Play("Rabbit_Die");
         yield return new WaitForSeconds(0.8f);
+        myBody.velocity = Vector2.zero;
         this.transform.position = LevelController.current.getStartPosition();
         dead = false;
+        SetNewParent(this.transform, this.heroParent);
     }
 
     public void EatMushroom()
