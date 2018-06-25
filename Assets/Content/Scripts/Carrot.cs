@@ -1,18 +1,39 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Carrot : Collectable
+public class Carrot : MonoBehaviour
 {
+    public float Speed;
+    public float LifeTime = 3;
+    public bool Direction;
+    private Vector3 target;
 
-    void Start()
+    private void Start()
     {
-        StartCoroutine(destroyLater());
+        StartCoroutine(DestroyLater());
+        GetComponent<SpriteRenderer>().flipX = Direction;
+        if (!Direction)
+            target = new Vector3(1000, transform.position.y, 0);
+        else target = new Vector3(-1000, transform.position.y, 0);
     }
 
-    IEnumerator destroyLater()
+    private void FixedUpdate()
     {
-        yield return new WaitForSeconds(3.0f);
-        Destroy(this.gameObject);
+        transform.position = Vector3.MoveTowards(transform.position, target, Speed);
+    }
+
+    private IEnumerator DestroyLater()
+    {
+        yield return new WaitForSeconds(LifeTime);
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponent<HeroController>() != null)
+        {
+            LevelController.current.onRabbitDeath(other.GetComponent<HeroController>());
+            Destroy(gameObject);
+        }
     }
 }

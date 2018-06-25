@@ -79,14 +79,15 @@ public class ShotingOrcEnemy : MonoBehaviour {
 
     void updateMode()
     {
-        if (rabbit.transform.position.x > Mathf.Min(pointA.x, pointB.x) + range
-            && rabbit.transform.position.x < Mathf.Max(pointA.x, pointB.x) + range)
+        if (rabbit.transform.position.x > transform.position.x - range
+            && rabbit.transform.position.x < transform.position.x + range)
         {
             mode = Mode.Attack;
             sr.flipX = rabbit.transform.position.x > transform.position.x; //turn the sprite
         }
         else if (!sr.flipX || mode == Mode.GoToA)
         {
+            mode = Mode.GoToA;
             if (isArrived(pointA))
             {
                 mode = Mode.GoToB;
@@ -96,6 +97,7 @@ public class ShotingOrcEnemy : MonoBehaviour {
         }
         else if (sr.flipX || mode == Mode.GoToB)
         {
+            mode = Mode.GoToB;
             if (isArrived(pointB))
             {
                 mode = Mode.GoToA;
@@ -114,12 +116,10 @@ public class ShotingOrcEnemy : MonoBehaviour {
     {
         timeLeft = ReloadTime;
         animOrc.Play("BrownOrc_Attack");
-
         Carrot newCarrot = Instantiate(CarrotGameObject.gameObject).GetComponent<Carrot>();
-        newCarrot.transform.position = transform.position;
+        newCarrot.transform.position = transform.position + new Vector3(0,1,0);
         newCarrot.Speed = CarrotSpeed;
-        newCarrot.Direction = GetDirection() < 0;
-        newCarrot.LifeTime = CarrotLifeTime;
+        newCarrot.Direction = !sr.flipX;
     }
 
     void OnCollisionEnter2D(Collision2D other)

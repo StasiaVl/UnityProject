@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4788869733560098}
   - component: {fileID: 212265628468943160}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform-15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4278347683715444}
   - component: {fileID: 212024839041838002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform-06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4794676152564998}
   - component: {fileID: 212431264040700432}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform-16 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4658135434942990}
   - component: {fileID: 212784710187313568}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform-17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4352753886044610}
   - component: {fileID: 212149313010757532}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform-05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4357670018905644}
   - component: {fileID: 212913773392501370}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform-16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4692853388720648}
   - component: {fileID: 212765723080839648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform-07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4943897192354006}
   - component: {fileID: 68085108200242696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4059982866074498}
   - component: {fileID: 212006696812452010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform-06 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,8 +265,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1677747844011750}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -38.8, y: -1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4352753886044610}
