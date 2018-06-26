@@ -147,7 +147,7 @@ public class HeroController : MonoBehaviour {
         }
         else
         {
-            Die();
+            LevelController.current.OnRabitDeath();
         }
     }
 
