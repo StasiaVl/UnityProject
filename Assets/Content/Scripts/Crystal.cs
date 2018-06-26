@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Crystal : Collectable
 {
+    public CrystalType type;
 
     protected override void OnRabitHit(HeroController rabit)
     {
-        LevelController.current.addCoins(50);
+        LevelController.current.pickUpCrystal(type);
         this.CollectedHide();
     }
 }
